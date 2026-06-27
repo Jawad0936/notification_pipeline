@@ -4,7 +4,8 @@ defmodule NotificationPipeline.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      Pipeline.Store           # ← add this
+      Pipeline.Store,
+      Pipeline.Producer    # ← add this
     ]
 
     opts = [strategy: :one_for_one, name: NotificationPipeline.Supervisor]
