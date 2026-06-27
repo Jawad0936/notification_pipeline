@@ -11,7 +11,8 @@ defmodule NotificationPipeline.Application do
       Pipeline.Producer,
       Pipeline.PriorityFilter,
       Pipeline.ConsumerSupervisor,
-      Pipeline.BroadwayPipeline
+      Pipeline.BroadwayPipeline,
+      PipelineWeb.Endpoint
     ]
 
     opts = [strategy: :one_for_one, name: NotificationPipeline.Supervisor]

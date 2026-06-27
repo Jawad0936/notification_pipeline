@@ -27,6 +27,7 @@ defmodule NotificationPipeline.MixProject do
       # Pipeline
       {:gen_stage, "~> 1.2"},
       {:broadway, "~> 1.0"},
+      {:elixir_uuid, "~> 1.2"},
 
       # Phoenix + LiveView
       {:phoenix, "~> 1.7"},
