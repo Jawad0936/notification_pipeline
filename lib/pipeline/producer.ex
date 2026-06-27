@@ -20,7 +20,7 @@ defmodule Pipeline.Producer do
 
   ## ── Public API ────────────────────────────────────────────────────────────
 
-  def start_link(opts \\ []) do
+  def start_link(_opts \\ []) do
     GenStage.start_link(__MODULE__, :ok, name: __MODULE__)
   end
 
