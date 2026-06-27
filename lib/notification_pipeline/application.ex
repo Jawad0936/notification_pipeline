@@ -9,13 +9,13 @@ defmodule NotificationPipeline.Application do
       Pipeline.Store,
       Pipeline.Producer,
       Pipeline.PriorityFilter,
-      Pipeline.ConsumerSupervisor
+      Pipeline.ConsumerSupervisor,
+      Pipeline.BroadwayPipeline
     ]
 
     opts = [strategy: :one_for_one, name: NotificationPipeline.Supervisor]
     {:ok, sup} = Supervisor.start_link(children, opts)
 
-    # Seed the initial consumer pool after the supervisor is up
     Enum.each(1..3, fn id ->
       DynamicSupervisor.start_child(
         Pipeline.ConsumerSupervisor,
