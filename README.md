@@ -1,21 +1,2 @@
-# NotificationPipeline
-
-**TODO: Add description**
-
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `notification_pipeline` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:notification_pipeline, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/notification_pipeline>.
-
+here is the medium blog for this codebase 
+https://medium.com/@jawad.ul.hassan2001/building-pinterests-notification-architecture-in-elixir-a-fan-out-pipeline-with-genstage-79a8f7fc7f17
