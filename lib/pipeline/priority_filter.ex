@@ -47,6 +47,8 @@ defmodule Pipeline.PriorityFilter do
       |> Enum.sort_by(& &1.priority, :desc)
       |> Enum.map(&tag_filtered/1)
 
+  Pipeline.Metrics.filtered(length(sorted))
+
     Logger.debug(
       "[PriorityFilter] received=#{length(events)} sorted_head=#{inspect(sorted_summary(sorted))}"
     )

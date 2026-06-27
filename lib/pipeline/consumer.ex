@@ -67,10 +67,12 @@ defmodule Pipeline.Consumer do
     case fan_out(notification) do
       :ok ->
         Pipeline.Store.mark_delivered(notification.id)
+        Pipeline.Metrics.delivered(notification)
         Logger.info("[Consumer #{consumer_id}] delivered id=#{notification.id}")
 
       {:error, reason} ->
         Pipeline.Store.mark_failed(notification.id)
+        Pipeline.Metrics.failed(notification)
         Logger.error(
           "[Consumer #{consumer_id}] failed id=#{notification.id} reason=#{inspect(reason)}"
         )

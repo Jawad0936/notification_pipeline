@@ -61,6 +61,7 @@ defmodule Pipeline.Producer do
   def handle_cast({:notify, notification}, state) do
     # Register the notification in the ETS store immediately on arrival
     Pipeline.Store.put(notification)
+    Pipeline.Metrics.produced(notification)
 
     new_queue = :queue.in(notification, state.queue)
 

@@ -44,6 +44,7 @@ def handle_message(_processor, message, _context) do
 
   # Register in ETS so mark_delivered has something to update
   Pipeline.Store.put(notification)
+  Pipeline.Metrics.broadway_processed(1)
 
   case validate(notification) do
     :ok ->
@@ -60,7 +61,9 @@ end
 
     Enum.map(messages, fn message ->
       case deliver(message.data) do
-        :ok              -> message
+        :ok ->
+          Pipeline.Metrics.broadway_delivered(1)
+          message
         {:error, reason} -> Message.failed(message, reason)
       end
     end)
@@ -73,6 +76,7 @@ end
       Logger.error("[Broadway] failed id=#{notification.id} reason=#{inspect(message.status)}")
       Pipeline.Store.mark_failed(notification.id)
     end)
+    Pipeline.Metrics.broadway_failed(length(messages))
     messages
   end
 

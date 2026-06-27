@@ -6,6 +6,7 @@ defmodule NotificationPipeline.Application do
     children = [
       {Registry, keys: :unique, name: Pipeline.ConsumerRegistry},
       {Phoenix.PubSub, name: NotificationPipeline.PubSub},
+      Pipeline.Metrics,
       Pipeline.Store,
       Pipeline.Producer,
       Pipeline.PriorityFilter,
